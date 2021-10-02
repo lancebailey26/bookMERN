@@ -16,7 +16,10 @@ type book {
    email: String!
    savedBooks: [book]
 }
-
+type Auth {
+  token: ID!
+  user: user
+}
 type Query {
   users: [user]!
   user(userId: ID!): user
@@ -24,8 +27,8 @@ type Query {
 }
 
 type Mutation {
-  addProfile(username: String!, email: String!, password: String!):
-  login(email: String!, password: String!):
+  addUser(username: String!, email: String!, password: String!): Auth
+  login(email: String!, password: String!): Auth
   addBook(userId: ID!, title: String): user
   removeBook(title: String!): user
 }
